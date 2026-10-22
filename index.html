@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Naura Khoirunnisa</title>
+<style>
+:root{--mint:#C1CFA1;--sage:#A5B68D;--sage-dark:#728A5E;--cream:#FCF9EA;--blush:#E7CCCC;--blush-dark:#C49898;--blush-deeper:#A87070;--ink:#3D3630;--text:#3D3630;--text-muted:#5E554F;--bg:#FCF9EA}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+:focus-visible{outline:3px solid var(--blush-deeper);outline-offset:3px}
+#progressBar{position:fixed;top:0;left:0;height:5px;width:0%;background:var(--blush-deeper);z-index:9999;transition:width .1s ease}
+
+/* Navbar: solid, squared, floating */
+nav.navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:auto;max-width:calc(100% - 28px);z-index:1000;background:var(--cream);border:3px solid var(--ink);border-radius:999px;padding:6px;box-shadow:5px 5px 0 var(--ink)}
+nav.navbar>.container{max-width:none;padding:0;width:auto}
+@media(max-width:991px){nav.navbar{width:calc(100% - 28px);padding:8px 12px;border-radius:26px}nav.navbar>.container{width:100%}.navbar-collapse{padding:8px 0 6px}}
+.nav-link{color:var(--ink)!important;font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:.8rem;padding:8px 16px!important;border-radius:999px}
+.nav-link:hover,.nav-link.active{background:var(--ink);color:var(--cream)!important}
+.navbar-toggler{border:none;background:transparent;padding:4px 8px}
+
+/* Shared */
+.sec{padding:110px 0;border-top:3px solid var(--ink)}
+.bg-mint{background:var(--mint)}.bg-blush{background:var(--blush)}
+.section-tag{display:inline-block;background:var(--ink);color:var(--cream);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:6px 16px;margin-bottom:1.2rem;border-radius:999px}
+.sec-title{font-family:'Abril Fatface',cursive;font-size:clamp(2.8rem,7vw,5.2rem);color:var(--ink);line-height:1;letter-spacing:-1.5px;margin-bottom:1.2rem}
+.hl-blush{color:var(--blush-deeper)}.hl-sage{color:var(--sage-dark)}
+.bg-mint .sec-title span,.bg-blush .sec-title span{color:var(--ink)}
+.sec-head{border-bottom:3px solid var(--ink);padding-bottom:1.6rem;margin-bottom:3.2rem}
+.sec-head p{color:var(--text-muted);max-width:560px;line-height:1.65;font-size:1rem;margin:0}
+.sec-head .sec-title{margin-bottom:.8rem}
+
+.btn-blush,.btn-sage{padding:14px 30px;border-radius:999px;font-weight:800;font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:3px solid var(--ink);transition:translate .12s,box-shadow .12s}
+.btn-blush{background:var(--ink);color:var(--cream);box-shadow:5px 5px 0 var(--blush-deeper)}
+.btn-sage{background:var(--cream);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.btn-blush:hover,.btn-sage:hover{translate:3px 3px;box-shadow:2px 2px 0 var(--ink);color:inherit}
+.btn-blush:hover{color:var(--cream)}
+
+.social-link{width:46px;height:46px;background:var(--cream);border:3px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:1.05rem;text-decoration:none;transition:background .15s,color .15s}
+.social-link:hover{background:var(--ink);color:var(--cream)}
+
+/* Hero */
+.hero-section{min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;position:relative}
+.hero-eyebrow{display:inline-block;background:var(--ink);color:var(--cream);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:6px 16px;margin-bottom:1.4rem;border-radius:999px}
+.hero-title{font-family:'Abril Fatface',cursive;font-size:clamp(4.4rem,12vw,9rem);line-height:.86;letter-spacing:-4px;color:var(--ink);margin-bottom:1.4rem}
+.hero-title .name{color:var(--sage-dark)}
+.hero-sub{font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:1rem;padding-left:16px;border-left:6px solid var(--blush-deeper)}
+.hero-desc{font-size:1rem;color:var(--text-muted);line-height:1.75;margin-bottom:2.4rem;max-width:520px}
+.hero-btns{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:2.6rem}
+.hero-frame-wrap{position:relative}
+.hero-frame{width:min(310px,78vw);height:min(380px,96vw);background:var(--mint);border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink);position:relative;border-radius:999px 999px 36px 36px}
+.hero-img{position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);height:112%;width:auto;z-index:1}
+.deco-badge{position:absolute;border-radius:50%;background:var(--blush);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;color:var(--ink);z-index:2}
+.scroll-indicator{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:var(--ink);cursor:pointer}
+
+/* About */
+.stat-card{background:var(--cream);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);border-radius:22px;padding:1.4rem .8rem;text-align:center}
+.stat-num{font-family:'Abril Fatface',cursive;font-size:2.8rem;line-height:1;color:var(--ink);margin-bottom:.4rem}
+.stat-lbl{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
+.about-frame{background:var(--blush);border:3px solid var(--ink);box-shadow:10px 10px 0 var(--ink);border-radius:48% 52% 44% 56%/40% 46% 54% 60%;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center}
+.about-text{font-size:1rem;line-height:1.8;color:var(--text-muted);margin-bottom:1.2rem}
+.highlight-text,.highlight-green{color:var(--ink);font-weight:800}
+
+/* Services */
+.svc-card{background:var(--cream);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:28px;padding:2rem 1.6rem;height:100%}
+.svc-icon{width:60px;height:60px;border-radius:50%;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:1.4rem;font-size:1.5rem;color:var(--ink)}
+.ic-blush{background:var(--blush)}.ic-mint{background:var(--mint)}
+.svc-card h3{font-size:1.25rem;font-weight:800;margin-bottom:.8rem}
+.svc-card p{color:var(--text-muted);line-height:1.65;font-size:.93rem;margin-bottom:1.4rem}
+.svc-link{color:var(--ink);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px;font-weight:800;font-size:.8rem;text-transform:uppercase;letter-spacing:1px}
+.svc-link:hover{color:var(--blush-deeper)}
+
+/* Projects */
+.filter-buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:3rem}
+.filter-btn{background:var(--cream);border:3px solid var(--ink);color:var(--ink);padding:9px 20px;border-radius:999px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;cursor:pointer}
+.filter-btn:hover,.filter-btn.active{background:var(--ink);color:var(--cream)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:2.8rem}
+.project-card{background:var(--cream);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);border-radius:28px;overflow:hidden;position:relative;cursor:pointer;transition:translate .15s,box-shadow .15s}
+.project-card:hover{translate:-4px -4px;box-shadow:12px 12px 0 var(--ink)}
+.project-image{position:relative;height:260px;overflow:hidden;background:var(--mint);border-bottom:3px solid var(--ink)}
+.project-image img{width:100%;height:100%;object-fit:cover}
+.project-overlay{position:absolute;inset:0;background:rgba(61,54,48,.9);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.project-card:hover .project-overlay{opacity:1}
+.overlay-content{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+.view-btn{background:var(--cream);color:var(--ink);border:3px solid var(--cream);border-radius:999px;padding:10px 18px;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.view-btn:hover{background:var(--blush);border-color:var(--blush)}
+.project-content{padding:1.6rem}
+.project-category{color:var(--blush-deeper);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+.project-title{font-size:1.4rem;font-weight:800;margin-bottom:.8rem;line-height:1.2}
+.project-description{font-size:.93rem;line-height:1.65;color:var(--text-muted);margin-bottom:1.3rem}
+.project-tech,.skill-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tech-tag,.skill-tag{background:var(--blush);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:2px 12px;font-size:.76rem;font-weight:700}
+.tech-tag.green,.skill-tag.green{background:var(--mint)}
+.featured-project .project-image{height:320px}
+.featured-badge{position:absolute;top:0;right:0;z-index:2;background:var(--ink);color:var(--cream);padding:8px 18px;border-radius:0 0 0 18px;font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.project-modal{display:none;position:fixed;inset:0;background:rgba(61,54,48,.8);z-index:2000;justify-content:center;align-items:center;padding:1.5rem}
+.modal-inner{background:var(--cream);border:3px solid var(--ink);box-shadow:10px 10px 0 var(--blush-deeper);border-radius:28px;max-width:780px;width:100%;max-height:88vh;overflow-y:auto;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--ink);border:none;color:var(--cream);width:38px;height:38px;border-radius:50%;cursor:pointer;z-index:1}
+.modal-close:hover{background:var(--blush-deeper)}
+.modal-body{padding:2.4rem}
+.modal-body h2{font-family:'Abril Fatface',cursive;font-size:2.2rem;margin-bottom:1rem}
+.modal-body p{color:var(--text-muted);line-height:1.75;font-size:.97rem;margin-bottom:1rem}
+.modal-body img{width:100%;border:3px solid var(--ink);border-radius:18px;margin:1rem 0}
+
+/* Timeline */
+.timeline{position:relative;max-width:960px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:4px;background:var(--ink);transform:translateX(-50%)}
+.timeline-item{margin:1.2rem 0;position:relative}
+.timeline-item:nth-child(even){margin-top:-7rem}
+.timeline-item:nth-child(odd) .tl-content{margin-right:52%;text-align:right}
+.timeline-item:nth-child(even) .tl-content{margin-left:52%;text-align:left}
+.timeline-item:nth-child(odd) .skill-tags{justify-content:flex-end}
+.tl-content{background:var(--cream);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:26px;padding:1.5rem}
+.tl-marker{position:absolute;left:50%;top:30px;transform:translateX(-50%);width:52px;height:52px;border-radius:50%;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--ink);z-index:10}
+.tl-edu{background:var(--mint)}.tl-comm{background:var(--cream)}.tl-health{background:var(--sage)}
+.tl-photo{aspect-ratio:2/1;background:var(--mint);border:3px solid var(--ink);border-radius:18px;overflow:hidden;margin-bottom:1rem}
+.tl-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.tl-org{color:var(--blush-deeper);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem}
+.tl-role{font-size:1.25rem;font-weight:800;line-height:1.25;margin-bottom:.3rem}
+.tl-period{font-size:.86rem;font-weight:600;color:var(--text-muted);margin-bottom:.8rem}
+.tl-desc{font-size:.93rem;line-height:1.65;color:var(--text-muted);margin-bottom:.8rem}
+
+/* Contact */
+.info-card{background:var(--cream);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);border-radius:28px;padding:1.8rem;height:100%}
+.info-icon{width:56px;height:56px;border-radius:50%;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.2rem;color:var(--ink)}
+.info-title{font-size:1.1rem;font-weight:800;margin-bottom:.5rem}
+.info-text{font-size:.92rem;color:var(--text-muted);line-height:1.65;overflow-wrap:anywhere}
+.info-link{color:var(--ink);font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.info-link:hover{color:var(--blush-deeper)}
+
+/* CTA + footer */
+.cta-section{padding:120px 0;background:var(--ink);color:var(--cream);border-radius:56px 56px 0 0}
+.cta-section .sec-title{color:var(--cream)}
+.cta-section .hl-blush{color:var(--blush)}.cta-section .hl-sage{color:var(--mint)}
+.cta-section .section-tag{background:var(--cream);color:var(--ink)}
+.cta-section p{color:rgba(252,249,234,.82)}
+.cta-section .btn-blush{background:var(--cream);color:var(--ink);border-color:var(--cream);box-shadow:5px 5px 0 var(--blush-deeper)}
+.cta-section .btn-blush:hover{color:var(--ink);box-shadow:2px 2px 0 var(--blush-deeper)}
+.cta-section .btn-sage{background:transparent;color:var(--cream);border-color:var(--cream);box-shadow:5px 5px 0 var(--sage-dark)}
+.cta-section .btn-sage:hover{box-shadow:2px 2px 0 var(--sage-dark)}
+footer{padding:50px 0 25px;border-top:3px solid var(--ink);text-align:center}
+.footer-brand{font-size:1.8rem;font-weight:800;letter-spacing:2px;margin-bottom:.7rem}
+.footer-brand .accent{color:var(--blush-deeper)}
+.footer-copy{color:var(--text-muted);font-size:.85rem;border-top:3px solid var(--ink);padding-top:1.4rem;margin-top:1.4rem}
+
+/* Animations: simple fade-up only */
+.fade-in,.slide-l,.slide-r,.scale-up,.tl-anim{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.visible{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.fade-in,.slide-l,.slide-r,.scale-up,.tl-anim{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media(max-width:768px){
+  .sec{padding:80px 0}
+  .hero-btns{flex-direction:column;align-items:flex-start;gap:1.2rem}
+  .btn-blush,.btn-sage{width:100%;max-width:280px;justify-content:center}
+  .timeline::before{left:26px}
+  .timeline-item:nth-child(odd) .tl-content,.timeline-item:nth-child(even) .tl-content{margin-left:66px;margin-right:0;text-align:left}
+  .timeline-item:nth-child(odd) .skill-tags{justify-content:flex-start}
+  .tl-marker{left:26px}
+  .timeline-item:nth-child(even){margin-top:1.2rem}
+}
+@media(max-width:480px){.project-image,.featured-project .project-image{height:210px}}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars" style="color:var(--ink);font-size:1.2rem;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#community">Community</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section" id="home">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="hero-eyebrow fade-in">Creative Developer ✦</span>
+        <h1 class="hero-title fade-in">Hi,<br>I'm <span class="name">Naura</span></h1>
+        <p class="hero-sub slide-l">Designer &amp; Developer</p>
+        <p class="hero-desc slide-l">I specialize in creating stunning websites, mobile applications, and brand identities that captivate audiences and drive results. Let's bring your vision to life.</p>
+        <div class="hero-btns slide-l">
+          <a href="#projects" class="btn-blush"><i class="fas fa-rocket"></i> View My Work</a>
+          <a href="#contact" class="btn-sage"><i class="fas fa-comment"></i> Hire Me</a>
+        </div>
+        <div class="d-flex gap-3 slide-l">
+          <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+          <a href="#" class="social-link" title="Behance"><i class="fab fa-behance"></i></a>
+          <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-5 d-flex justify-content-center slide-r">
+        <div class="hero-frame-wrap">
+          <div class="hero-frame"><img class="hero-img" src="porto.png" alt="Naura"></div>
+          <div class="deco-badge" style="width:64px;height:64px;top:-22px;right:-22px;font-size:1.5rem;"><i class="fas fa-pen-nib"></i></div>
+          <div class="deco-badge" style="width:56px;height:56px;bottom:-20px;left:-20px;background:var(--sage);font-size:1.3rem;"><i class="fas fa-mobile-alt"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator d-none d-lg-block" onclick="document.querySelector('#about').scrollIntoView({behavior:'smooth'})"><i class="fas fa-chevron-down fa-2x"></i></div>
+</section>
+
+<!-- About -->
+<section class="sec" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="section-tag fade-in">About Me</span>
+        <h2 class="sec-title fade-in">Who <span class="hl-blush">I</span> Am<span class="hl-sage">.</span></h2>
+        <p class="about-text fade-in">Hi, I'm <span class="highlight-text">Naura</span>, a passionate UI/UX Designer and Web Developer based in Indonesia. I believe in creating digital experiences that not only look stunning but also solve real problems and connect with people on a meaningful level.</p>
+        <p class="about-text fade-in">My journey in design began with a fascination for how <span class="highlight-green">colors, shapes, and interactions</span> can evoke emotions and guide user behavior. My approach combines creativity with technical excellence, ensuring every project performs flawlessly across all platforms and devices.</p>
+        <div class="row g-3 mt-3">
+          <div class="col-4"><div class="stat-card scale-up"><div class="stat-num" data-count="150">0</div><div class="stat-lbl">Projects</div></div></div>
+          <div class="col-4"><div class="stat-card scale-up"><div class="stat-num" data-count="98" data-suffix="%">0</div><div class="stat-lbl">Satisfaction</div></div></div>
+          <div class="col-4"><div class="stat-card scale-up"><div class="stat-num" data-count="5">0</div><div class="stat-lbl">Yrs Exp</div></div></div>
+        </div>
+      </div>
+      <div class="col-lg-4 offset-lg-1 slide-r">
+        <div class="about-frame"><i class="fas fa-user-astronaut fa-8x" style="color:var(--ink);opacity:.35;"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="sec bg-mint" id="services">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <span class="section-tag">Services</span>
+      <h2 class="sec-title">What <span>I</span> <span>Do</span></h2>
+      <p>A comprehensive range of digital services to help your business thrive in the digital landscape.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="svc-card scale-up"><div class="svc-icon ic-mint"><i class="fas fa-laptop-code"></i></div><h3>Web Development</h3><p>Custom websites built with modern technologies for optimal performance and user experience.</p><a href="#projects" class="svc-link">View Projects <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+      <div class="col-md-4"><div class="svc-card scale-up"><div class="svc-icon ic-blush"><i class="fas fa-mobile-alt"></i></div><h3>Mobile Apps</h3><p>Native and cross-platform applications that deliver seamless experiences on iOS and Android.</p><a href="#projects" class="svc-link">View Projects <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+      <div class="col-md-4"><div class="svc-card scale-up"><div class="svc-icon ic-mint"><i class="fas fa-paint-brush"></i></div><h3>UI/UX Design</h3><p>User-centered design solutions that create intuitive and conversion-focused digital experiences.</p><a href="#projects" class="svc-link">View Projects <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+      <div class="col-md-4"><div class="svc-card scale-up"><div class="svc-icon ic-blush"><i class="fas fa-bullhorn"></i></div><h3>Brand Identity</h3><p>Complete brand identity packages that make your business memorable and distinctive.</p><a href="#projects" class="svc-link">View Projects <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+      <div class="col-md-4"><div class="svc-card scale-up"><div class="svc-icon ic-mint"><i class="fas fa-search"></i></div><h3>SEO Optimization</h3><p>Strategies that improve your online visibility and drive organic traffic to your platforms.</p><a href="#contact" class="svc-link">Get Started <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+      <div class="col-md-4"><div class="svc-card scale-up"><div class="svc-icon ic-blush"><i class="fas fa-cogs"></i></div><h3>Digital Strategy</h3><p>Comprehensive strategies that align with your goals and maximize your return on investment.</p><a href="#contact" class="svc-link">Learn More <i class="fas fa-arrow-right ms-1"></i></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="sec" id="projects">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="sec-title">My <span class="hl-blush">Work</span><span class="hl-sage">.</span></h2>
+    </div>
+    <div class="filter-buttons fade-in">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="web">Web Design</button>
+      <button class="filter-btn" data-filter="mobile">Mobile App</button>
+      <button class="filter-btn" data-filter="branding">Branding</button>
+      <button class="filter-btn" data-filter="ui-ux">UI/UX</button>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card featured-project fade-in" data-category="web ui-ux">
+        <div class="featured-badge"><i class="fas fa-star me-1"></i> Featured</div>
+        <div class="project-image"><img src="https://via.placeholder.com/800x350/C1CFA1/728A5E?text=E-Commerce+Platform" alt="E-Commerce Platform">
+          <div class="project-overlay"><div class="overlay-content"><button class="view-btn" onclick="openModal('ecommerce')"><i class="fas fa-eye"></i> View Details</button><button class="view-btn"><i class="fas fa-external-link-alt"></i> Live Demo</button></div></div></div>
+        <div class="project-content"><div class="project-category">Web Development • UI/UX</div><h3 class="project-title">Modern E-Commerce Platform</h3><p class="project-description">A comprehensive e-commerce solution with advanced filtering, real-time inventory management, and seamless checkout experience built with modern technologies.</p>
+          <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag green">MongoDB</span><span class="tech-tag">Stripe</span><span class="tech-tag green">Redux</span></div></div>
+      </div>
+      <div class="project-card fade-in" data-category="mobile ui-ux">
+        <div class="project-image"><img src="https://via.placeholder.com/400x260/E7CCCC/A87070?text=Fitness+App" alt="Fitness App">
+          <div class="project-overlay"><div class="overlay-content"><button class="view-btn" onclick="openModal('fitness')"><i class="fas fa-eye"></i> View Details</button><button class="view-btn"><i class="fas fa-external-link-alt"></i> Live Demo</button></div></div></div>
+        <div class="project-content"><div class="project-category">Mobile App • UI/UX</div><h3 class="project-title">FitTrack Mobile App</h3><p class="project-description">Intuitive fitness tracking app with personalized workout plans, progress monitoring, and social features to keep users motivated.</p>
+          <div class="project-tech"><span class="tech-tag">React Native</span><span class="tech-tag green">Firebase</span><span class="tech-tag">Redux</span></div></div>
+      </div>
+      <div class="project-card fade-in" data-category="branding">
+        <div class="project-image"><img src="https://via.placeholder.com/400x260/A5B68D/3D3630?text=Brand+Identity" alt="Brand Identity">
+          <div class="project-overlay"><div class="overlay-content"><button class="view-btn" onclick="openModal('brand')"><i class="fas fa-eye"></i> View Details</button><button class="view-btn"><i class="fas fa-external-link-alt"></i> Portfolio</button></div></div></div>
+        <div class="project-content"><div class="project-category">Branding</div><h3 class="project-title">Sustainable Brand Identity</h3><p class="project-description">Complete brand identity design for an eco-friendly startup, including logo, color palette, typography, and brand guidelines.</p>
+          <div class="project-tech"><span class="tech-tag green">Illustrator</span><span class="tech-tag green">Photoshop</span><span class="tech-tag">InDesign</span></div></div>
+      </div>
+      <div class="project-card fade-in" data-category="web">
+        <div class="project-image"><img src="https://via.placeholder.com/400x260/C1CFA1/728A5E?text=Restaurant+Website" alt="Restaurant Website">
+          <div class="project-overlay"><div class="overlay-content"><button class="view-btn" onclick="openModal('restaurant')"><i class="fas fa-eye"></i> View Details</button><button class="view-btn"><i class="fas fa-external-link-alt"></i> Live Site</button></div></div></div>
+        <div class="project-content"><div class="project-category">Web Development</div><h3 class="project-title">Restaurant Website</h3><p class="project-description">Elegant restaurant website with online reservation system, menu showcase, and location integration.</p>
+          <div class="project-tech"><span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span><span class="tech-tag green">JavaScript</span><span class="tech-tag">PHP</span></div></div>
+      </div>
+      <div class="project-card fade-in" data-category="ui-ux">
+        <div class="project-image"><img src="https://via.placeholder.com/400x260/E7CCCC/A87070?text=Dashboard+UI" alt="Dashboard">
+          <div class="project-overlay"><div class="overlay-content"><button class="view-btn" onclick="openModal('dashboard')"><i class="fas fa-eye"></i> View Details</button><button class="view-btn"><i class="fas fa-external-link-alt"></i> Prototype</button></div></div></div>
+        <div class="project-content"><div class="project-category">UI/UX Design</div><h3 class="project-title">Analytics Dashboard</h3><p class="project-description">Clean and intuitive dashboard design for data visualization with focus on usability and information hierarchy.</p>
+          <div class="project-tech"><span class="tech-tag">Figma</span><span class="tech-tag">Principle</span><span class="tech-tag green">Sketch</span></div></div>
+      </div>
+      <div class="project-card fade-in" data-category="mobile">
+        <div class="project-image"><img src="https://via.placeholder.com/400x260/A5B68D/3D3630?text=Travel+App" alt="Travel App">
+          <div class="project-overlay"><div class="overlay-content"><button class="view-btn" onclick="openModal('travel')"><i class="fas fa-eye"></i> View Details</button><button class="view-btn"><i class="fas fa-external-link-alt"></i> App Store</button></div></div></div>
+        <div class="project-content"><div class="project-category">Mobile Development</div><h3 class="project-title">Travel Companion App</h3><p class="project-description">Comprehensive travel app with itinerary planning, local recommendations, and offline map functionality.</p>
+          <div class="project-tech"><span class="tech-tag green">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag green">Google Maps</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="project-modal" id="projectModal"><div class="modal-inner"><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button><div class="modal-body" id="modalContent"></div></div></div>
+
+<!-- Community -->
+<section class="sec bg-blush" id="community">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <span class="section-tag">Beyond the Code</span>
+      <h2 class="sec-title">Community<span> &amp; </span><span>Leadership</span></h2>
+      <p>Beyond code, I enjoy working with people!</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-edu"><i class="fas fa-chalkboard-teacher"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="gmd2.jpeg" alt="Gerakan Mengajar Desa – Head of Curriculum Division (Curriculum Manager)" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Gerakan Mengajar Desa</div><div class="tl-role">Head of Curriculum Division (Curriculum Manager)</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> August 2025 – March 2026</div>
+        <p class="tl-desc">Designed the curriculum for the teaching volunteers and coordinated the Training of Trainers agenda to prepare them before heading to the village.</p>
+        <div class="skill-tags"><span class="skill-tag">Leadership</span><span class="skill-tag green">Curriculum Design</span><span class="skill-tag green">Coordination</span></div></div></div>
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-comm"><i class="fas fa-file-alt"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="photos/hima-ti.jpg" alt="Himpunan Mahasiswa Teknik Informatika D3 – Secretary" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Himpunan Mahasiswa Teknik Informatika D3</div><div class="tl-role">Secretary</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> July 2025 – February 2026</div>
+        <p class="tl-desc">Handled administration, correspondence, and documentation for the Informatics Engineering (D3) student association.</p>
+        <div class="skill-tags"><span class="skill-tag">Administration</span><span class="skill-tag">Communication</span><span class="skill-tag green">Organization</span></div></div></div>
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-health"><i class="fas fa-code"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="csa.jpeg" alt="Creative Student Association – Programming Division Member" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Creative Student Association</div><div class="tl-role">Programming Division Member</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> April 2025 – April 2026</div>
+        <p class="tl-desc">Wrote code for the association's projects, joined the events division when events were held, and worked as a data analyst on project work.</p>
+        <div class="skill-tags"><span class="skill-tag">Programming</span><span class="skill-tag green">Data Analysis</span><span class="skill-tag">Event Management</span></div></div></div>
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-edu"><i class="fas fa-hand-holding-heart"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="bantu.jpeg" alt="Bantu Mereka – Volunteer" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Bantu Mereka Indonesia</div><div class="tl-role">Volunteer</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> April 2025</div>
+        <p class="tl-desc">Spent a day volunteering at a home for children with cancer in Bandung.</p>
+        <div class="skill-tags"><span class="skill-tag">Volunteering</span><span class="skill-tag green">Empathy</span><span class="skill-tag">Teamwork</span></div></div></div>
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-comm"><i class="fas fa-book-reader"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="gmd1.jpeg" alt="Gerakan Mengajar Desa – Inspiring Tutor, Events Division" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Gerakan Mengajar Desa</div><div class="tl-role">Inspiring Tutor, Events Division</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> October 2024 – March 2025</div>
+        <p class="tl-desc">Served in my group's events division and taught in a village for a week. Prepared a week of teaching materials for elementary school students and planned the agenda for the closing performance.</p>
+        <div class="skill-tags"><span class="skill-tag">Teaching</span><span class="skill-tag green">Event Planning</span><span class="skill-tag green">Teamwork</span></div></div></div>
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-health"><i class="fas fa-bullhorn"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="genlit.jpeg" alt="Indorelawan x Generasi Literasi – Public Relations Division" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Indorelawan x Generasi Literasi</div><div class="tl-role">Public Relations Division</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> June 2024 – October 2024</div>
+        <p class="tl-desc">Opened donations for reading houses, connected reading houses with volunteer groups, and created a social media campaign about the reading emergency.</p>
+        <div class="skill-tags"><span class="skill-tag">Public Relations</span><span class="skill-tag">Social Media Campaign</span><span class="skill-tag green">Communication</span></div></div></div>
+      <div class="timeline-item tl-anim"><div class="tl-marker tl-edu"><i class="fas fa-graduation-cap"></i></div><div class="tl-content">
+        <div class="tl-photo"><img src="novo.jpeg" alt="Novoclub by Paragon – Volunteer" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="tl-org">Novoclub by Paragon</div><div class="tl-role">Volunteer</div><div class="tl-period"><i class="fas fa-calendar-alt me-1"></i> January 2024 – September 2024</div>
+        <p class="tl-desc">Joined Novoclub Region 3 and learned about leadership and responsibility through the community's webinars and programs.</p>
+        <div class="skill-tags"><span class="skill-tag">Leadership</span><span class="skill-tag green">Responsibility</span><span class="skill-tag">Learning</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="sec" id="contact">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <span class="section-tag">Let's Talk</span>
+      <h2 class="sec-title">Get In <span class="hl-blush">Touch</span><span class="hl-sage">.</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4 scale-up"><div class="info-card"><div class="info-icon ic-blush"><i class="fas fa-envelope"></i></div><div class="info-title">Email</div><div class="info-text"><a href="mailto:nauranisa1204@gmail.com" class="info-link">nauranisa1204@gmail.com</a><br>I typically respond within 24 hours</div></div></div>
+      <div class="col-md-4 scale-up"><div class="info-card"><div class="info-icon ic-mint"><i class="fas fa-phone"></i></div><div class="info-title">Phone / WhatsApp</div><div class="info-text"><a href="tel:+6281234567890" class="info-link">+62 812-3456-7890</a><br>Available Mon–Fri, 9AM–6PM WIB</div></div></div>
+      <div class="col-md-4 scale-up"><div class="info-card"><div class="info-icon ic-blush"><i class="fas fa-map-marker-alt"></i></div><div class="info-title">Location</div><div class="info-text">Indonesia 🇮🇩<br>Available for remote work worldwide</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container text-center">
+    <span class="section-tag fade-in">Let's Connect</span>
+    <h2 class="sec-title fade-in">Ready to Start<br>Your <span class="hl-blush">Project</span><span class="hl-sage">?</span></h2>
+    <p class="fade-in" style="font-size:1.05rem;margin:0 auto 2.5rem;max-width:560px;line-height:1.7;">Let's collaborate and create something extraordinary. Whether you have a clear vision or just an idea, I'm here to bring it to life.</p>
+    <div class="d-flex gap-4 justify-content-center flex-wrap fade-in">
+      <a href="#contact" class="btn-blush"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+      <a href="#projects" class="btn-sage"><i class="fas fa-eye"></i> View Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-brand">Naw<span class="accent">Space</span></div>
+    <p style="color:var(--text-muted);font-size:.92rem;margin-bottom:1.2rem;">Creative Developer · Crafting Exceptional Digital Experiences</p>
+    <div class="d-flex justify-content-center gap-3 mb-3">
+      <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-link" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+      <a href="#" class="social-link" title="Behance"><i class="fab fa-behance"></i></a>
+      <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="footer-copy">All rights reserved. Made with <i class="fas fa-heart" style="color:var(--blush-deeper);"></i> in Indonesia.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Scroll reveal + counters
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+      const el = e.target.querySelector('[data-count]');
+      if (el) {
+        const tgt = parseInt(el.dataset.count), suffix = el.dataset.suffix || '+';
+        let cur = 0; const inc = tgt / 50;
+        const t = setInterval(() => {
+          cur += inc;
+          if (cur >= tgt) { el.textContent = tgt + suffix; clearInterval(t); }
+          else el.textContent = Math.floor(cur) + suffix;
+        }, 40);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in,.slide-l,.slide-r,.scale-up,.tl-anim').forEach(el => obs.observe(el));
+
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  });
+
+  // Active nav link
+  const navLinks = [...document.querySelectorAll('.nav-link')];
+  const secObs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
+
+  // Smooth scroll + close mobile menu
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    const menu = document.getElementById('navbarNav');
+    if (menu.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(menu).hide();
+  }));
+
+  // Project filter
+  const filterBtns = document.querySelectorAll('.filter-btn'), cards = document.querySelectorAll('.project-card');
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    cards.forEach(c => {
+      const show = f === 'all' || c.dataset.category.includes(f);
+      c.style.display = show ? 'block' : 'none';
+      if (show) c.classList.add('visible');
+    });
+  }));
+
+  // Modal
+  const modalData = {
+    ecommerce: { title: 'Modern E-Commerce Platform', cat: 'Web Development • UI/UX', desc: 'A comprehensive e-commerce solution with advanced filtering, real-time inventory management, and seamless checkout experience. Built with React, Node.js, and MongoDB for optimal performance.', img: 'https://via.placeholder.com/680x300/C1CFA1/728A5E?text=E-Commerce+Details' },
+    fitness:   { title: 'FitTrack Mobile App', cat: 'Mobile App • UI/UX', desc: 'Intuitive fitness tracking app with personalized workout plans, progress monitoring, and social features to keep users motivated on their fitness journey.', img: 'https://via.placeholder.com/680x300/E7CCCC/A87070?text=FitTrack+Details' },
+    brand:     { title: 'Sustainable Brand Identity', cat: 'Branding', desc: 'Complete brand identity design for an eco-friendly startup. Includes logo system, color palette, typography guidelines, and comprehensive brand manual.', img: 'https://via.placeholder.com/680x300/A5B68D/3D3630?text=Brand+Details' },
+    restaurant:{ title: 'Restaurant Website', cat: 'Web Development', desc: 'Elegant restaurant website with online reservation system, menu showcase, and Google Maps integration. Fully responsive and optimised for conversions.', img: 'https://via.placeholder.com/680x300/C1CFA1/728A5E?text=Restaurant+Details' },
+    dashboard: { title: 'Analytics Dashboard', cat: 'UI/UX Design', desc: 'Clean and intuitive dashboard design for data visualization. Focused on information hierarchy, accessibility, and a calm visual language that reduces cognitive load.', img: 'https://via.placeholder.com/680x300/E7CCCC/A87070?text=Dashboard+Details' },
+    travel:    { title: 'Travel Companion App', cat: 'Mobile Development', desc: 'Comprehensive travel app with itinerary planning, local recommendations, and offline map functionality built with Flutter for cross-platform support.', img: 'https://via.placeholder.com/680x300/A5B68D/3D3630?text=Travel+Details' }
+  };
+  function openModal(id) {
+    const d = modalData[id];
+    document.getElementById('modalContent').innerHTML = `
+      <span class="section-tag">${d.cat}</span>
+      <h2>${d.title}</h2><p>${d.desc}</p><img src="${d.img}" alt="${d.title}">
+      <p>Additional screenshots, case study details, and live links can be added here.</p>
+      <div style="display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.5rem;">
+        <button class="btn-blush"><i class="fas fa-external-link-alt"></i> Live Demo</button>
+        <button class="btn-sage" onclick="closeModal()"><i class="fas fa-times"></i> Close</button>
+      </div>`;
+    document.getElementById('projectModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() { document.getElementById('projectModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+  document.getElementById('projectModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Fade in on load
+  window.addEventListener('load', () => {
+    document.body.style.opacity = '0'; document.body.style.transition = 'opacity 0.4s ease';
+    setTimeout(() => document.body.style.opacity = '1', 80);
+  });
+</script>
+</body>
+</html>
