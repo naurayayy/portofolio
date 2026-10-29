@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Restaurant website preview">
+  <rect width="800" height="500" fill="#EFEFF3"/>
+  <rect x="70" y="56" width="660" height="388" rx="12" fill="#FFFFFF" stroke="#E4E4EA"/>
+  <path d="M70 100h660" stroke="#E4E4EA"/>
+  <rect x="96" y="72" width="62" height="12" rx="6" fill="#1F2020"/>
+  <rect x="470" y="74" width="44" height="8" rx="4" fill="#D9D9E2"/>
+  <rect x="526" y="74" width="44" height="8" rx="4" fill="#D9D9E2"/>
+  <rect x="582" y="74" width="44" height="8" rx="4" fill="#D9D9E2"/>
+  <rect x="638" y="68" width="66" height="20" rx="10" fill="#FAE785"/>
+  <rect x="96" y="124" width="608" height="164" rx="8" fill="#1F2020"/>
+  <rect x="126" y="164" width="190" height="16" rx="8" fill="#FAE785"/>
+  <rect x="126" y="192" width="140" height="8" rx="4" fill="#6A6A72"/>
+  <rect x="126" y="208" width="110" height="8" rx="4" fill="#57575F"/>
+  <rect x="126" y="238" width="76" height="22" rx="11" fill="#FFFFFF"/>
+  <circle cx="560" cy="206" r="52" fill="#EAD69D"/>
+  <rect x="96" y="314" width="184" height="9" rx="4" fill="#D9D9E2"/>
+  <rect x="96" y="336" width="176" height="76" rx="8" fill="#FBF3D2"/>
+  <rect x="312" y="314" width="184" height="9" rx="4" fill="#D9D9E2"/>
+  <rect x="312" y="336" width="176" height="76" rx="8" fill="#FDEAF3"/>
+  <rect x="528" y="314" width="184" height="9" rx="4" fill="#D9D9E2"/>
+  <rect x="528" y="336" width="176" height="76" rx="8" fill="#EEF3F9"/>
+</svg>

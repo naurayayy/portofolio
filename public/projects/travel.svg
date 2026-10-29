@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Travel companion app preview">
+  <rect width="800" height="500" fill="#EFEFF3"/>
+  <rect x="286" y="46" width="228" height="408" rx="30" fill="#FFFFFF" stroke="#E4E4EA"/>
+  <rect x="360" y="62" width="80" height="8" rx="4" fill="#EDEDF2"/>
+  <rect x="310" y="88" width="84" height="10" rx="5" fill="#1F2020"/>
+  <rect x="310" y="118" width="180" height="150" rx="12" fill="#EEF3F9"/>
+  <path d="M322 236c34-38 52 8 84-24s40 6 72-20" fill="none" stroke="#0164B8" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 6"/>
+  <circle cx="340" cy="216" r="7" fill="#FFB7D5" stroke="#FFFFFF" stroke-width="3"/>
+  <circle cx="466" cy="196" r="7" fill="#0164B8" stroke="#FFFFFF" stroke-width="3"/>
+  <rect x="310" y="286" width="120" height="9" rx="4" fill="#D9D9E2"/>
+  <rect x="310" y="306" width="86" height="9" rx="4" fill="#ECECF1"/>
+  <rect x="310" y="332" width="86" height="58" rx="10" fill="#FBF3D2"/>
+  <rect x="404" y="332" width="86" height="58" rx="10" fill="#FDEAF3"/>
+  <rect x="310" y="404" width="180" height="28" rx="14" fill="#1F2020"/>
+  <circle cx="170" cy="150" r="28" fill="#FAE785"/>
+  <circle cx="626" cy="360" r="34" fill="#C3DAFF"/>
+</svg>

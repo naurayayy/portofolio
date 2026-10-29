@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Fitness tracking mobile app preview">
+  <rect width="800" height="500" fill="#EFEFF3"/>
+  <rect x="286" y="46" width="228" height="408" rx="30" fill="#FFFFFF" stroke="#E4E4EA"/>
+  <rect x="360" y="62" width="80" height="8" rx="4" fill="#EDEDF2"/>
+  <rect x="310" y="92" width="96" height="10" rx="5" fill="#1F2020" opacity=".18"/>
+  <circle cx="400" cy="176" r="54" fill="none" stroke="#FDEAF3" stroke-width="14"/>
+  <path d="M400 122a54 54 0 0 1 38 92" fill="none" stroke="#FBB9DA" stroke-width="14" stroke-linecap="round"/>
+  <rect x="376" y="168" width="48" height="12" rx="6" fill="#1F2020" opacity=".55"/>
+  <rect x="310" y="258" width="86" height="9" rx="4" fill="#E7E7EE"/>
+  <rect x="310" y="280" width="60" height="9" rx="4" fill="#F1F1F6"/>
+  <rect x="310" y="316" width="40" height="54" rx="10" fill="#FDEAF3"/>
+  <rect x="360" y="336" width="40" height="34" rx="10" fill="#FBB9DA"/>
+  <rect x="410" y="304" width="40" height="66" rx="10" fill="#FDEAF3"/>
+  <rect x="460" y="326" width="40" height="44" rx="10" fill="#FBB9DA"/>
+  <rect x="310" y="396" width="180" height="30" rx="15" fill="#1F2020"/>
+  <rect x="196" y="120" width="60" height="60" rx="16" fill="#FAE785"/>
+  <rect x="544" y="300" width="60" height="60" rx="16" fill="#FBB9DA"/>
+</svg>

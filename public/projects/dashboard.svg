@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" role="img" aria-label="Analytics dashboard preview">
+  <rect width="800" height="500" fill="#EFEFF3"/>
+  <rect x="60" y="52" width="680" height="396" rx="14" fill="#FFFFFF" stroke="#E4E4EA"/>
+  <rect x="60" y="52" width="150" height="396" rx="14" fill="#F6F6FA"/>
+  <rect x="150" y="52" width="60" height="396" fill="#F6F6FA"/>
+  <rect x="84" y="82" width="54" height="12" rx="6" fill="#1F2020"/>
+  <rect x="84" y="120" width="94" height="9" rx="4" fill="#C9C9D4"/>
+  <rect x="84" y="140" width="72" height="9" rx="4" fill="#DCDCE4"/>
+  <rect x="84" y="160" width="86" height="9" rx="4" fill="#DCDCE4"/>
+  <rect x="84" y="180" width="64" height="9" rx="4" fill="#DCDCE4"/>
+  <rect x="238" y="82" width="128" height="12" rx="6" fill="#1F2020"/>
+  <rect x="238" y="112" width="146" height="72" rx="10" fill="#EEF3F9"/>
+  <rect x="400" y="112" width="146" height="72" rx="10" fill="#FDEAF3"/>
+  <rect x="562" y="112" width="146" height="72" rx="10" fill="#FBF3D2"/>
+  <rect x="258" y="132" width="54" height="10" rx="5" fill="#0164B8"/>
+  <rect x="420" y="132" width="54" height="10" rx="5" fill="#D9739E"/>
+  <rect x="582" y="132" width="54" height="10" rx="5" fill="#BFA24A"/>
+  <rect x="238" y="212" width="470" height="1" fill="#E7E7EE"/>
+  <rect x="238" y="238" width="70" height="9" rx="4" fill="#C9C9D4"/>
+  <rect x="238" y="320" width="34" height="60" rx="6" fill="#C3DAFF"/>
+  <rect x="292" y="292" width="34" height="88" rx="6" fill="#0164B8"/>
+  <rect x="346" y="268" width="34" height="112" rx="6" fill="#C3DAFF"/>
+  <rect x="400" y="300" width="34" height="80" rx="6" fill="#0164B8"/>
+  <rect x="454" y="248" width="34" height="132" rx="6" fill="#C3DAFF"/>
+  <rect x="508" y="282" width="34" height="98" rx="6" fill="#0164B8"/>
+  <rect x="562" y="256" width="34" height="124" rx="6" fill="#C3DAFF"/>
+  <path d="M238 400h470" stroke="#E7E7EE"/>
+  <rect x="238" y="416" width="120" height="9" rx="4" fill="#DCDCE4"/>
+</svg>
